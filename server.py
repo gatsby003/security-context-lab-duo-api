@@ -5,13 +5,13 @@ def dispatch(path, headers, body, root):
     if path == '/admin/export':
         if headers.get('x-role') != 'admin':
             raise PermissionError('admin required')
-        return 'synthetic-admin-report'
+        return (Path(root).parent / 'admin-report.txt').read_text()
     if path == '/documents':
         return (Path(root) / headers['x-document']).read_text()
     if path == '/billing':
         if headers.get('x-verified-role') != 'admin':
             raise PermissionError('admin required')
-        return 'synthetic-billing-report'
+        return (Path(root).parent / 'billing-report.txt').read_text()
     if path == '/public':
         return (Path(root) / headers['x-public-file']).read_text()
     raise LookupError(path)
