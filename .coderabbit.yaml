@@ -1,5 +1,4 @@
 inheritance: false
 knowledge_base:
   automatic_linking_mode: disabled
-  linked_repositories:
-    - repository: gatsby003/security-context-lab-duo-gateway
+  linked_repositories: []
